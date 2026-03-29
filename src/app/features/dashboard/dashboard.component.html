@@ -1,0 +1,175 @@
+<div class="flex h-screen bg-slate-100">
+  
+  <aside class="w-64 bg-slate-900 text-white flex flex-col shadow-xl">
+    <div class="h-16 flex items-center px-6 border-b border-slate-800">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-white">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+        </div>
+        <span class="text-xl font-bold tracking-tight">Log<span class="text-indigo-400">Path</span></span>
+      </div>
+    </div>
+    
+    <nav class="flex-1 py-6 px-4 space-y-2">
+      <a href="#" class="bg-indigo-600/20 text-indigo-100 flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-colors shadow-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-indigo-400">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-3.75H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-3.75H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25a2.25 2.25 0 01-2.25-2.25v-2.25z" />
+        </svg>
+        Miche Lts POS
+      </a>
+      <a href="#" class="text-slate-300 hover:bg-slate-800 hover:text-white flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-slate-500 hover:text-slate-300">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+        </svg>
+        Historial Completo
+      </a>
+    </nav>
+  </aside>
+
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 shadow-sm z-10">
+      <div class="flex items-center gap-3">
+        <h2 class="text-xl font-semibold text-slate-900">Dashboard de Auditoría</h2>
+        <span class="px-3 py-1 rounded-full bg-slate-100 text-xs font-medium text-slate-600 border border-slate- slate-200">Terminal POS - Miche Lts</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-indigo-600 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+        </button>
+        <div class="flex items-center gap-3 border-l pl-4 border-slate-200">
+          <span class="text-sm font-medium text-slate-700">Adrián</span>
+          <img src="https://ui-avatars.com/api/?name=Adrian&background=4f46e5&color=fff" alt="Avatar" class="h-9 w-9 rounded-full ring-2 ring-indigo-100">
+        </div>
+      </div>
+    </header>
+
+    <div class="flex-1 overflow-auto p-8 bg-slate-100 space-y-8">
+      
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 flex items-center gap-5">
+          <div class="w-14 h-14 rounded-xl bg-indigo-50 flex items-center justify-center border border-indigo-100 text-indigo-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-slate-500">Eventos del POS (Hoy)</p>
+            <p class="text-3xl font-bold text-slate-900 mt-1">1,234</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 flex items-center gap-5">
+          <div class="w-14 h-14 rounded-xl bg-emerald-50 flex items-center justify-center border border-emerald-100 text-emerald-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75m0 1.5v.75m0 1.5v.75m0 1.5V15m1.5-1.5h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m-9-9h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m-9-9h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75m1.5 0h.75" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-slate-500">Ventas Procesadas (Hoy)</p>
+            <p class="text-3xl font-bold text-slate-900 mt-1">$15,750</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-lg shadow-slate-200/50 flex items-center gap-5">
+          <div class="w-14 h-14 rounded-xl bg-red-50 flex items-center justify-center border border-red-100 text-red-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-slate-500">Errores Críticos POS (Hoy)</p>
+            <p class="text-3xl font-bold text-red-600 mt-1">3</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/60 overflow-hidden">
+        <div class="px-8 py-6 border-b border-slate-100 flex items-center justify-between gap-4">
+            <div>
+                <h3 class="text-xl font-semibold text-slate-900">Flujo de Actividad Reciente</h3>
+                <p class="text-sm text-slate-500 mt-1">Registro de eventos en tiempo real enviado por Miche Lts POS Client</p>
+            </div>
+<div class="flex items-center gap-2">
+    <button (click)="setFilter('ALL')" 
+            [ngClass]="currentFilter === 'ALL' ? 'bg-indigo-100 border-indigo-200 ring-1 ring-indigo-300' : 'bg-indigo-50 border-indigo-100'"
+            class="px-4 py-2 text-xs font-semibold rounded-lg text-indigo-700 border hover:bg-indigo-100 transition">
+        Ver Todos
+    </button>
+    <button (click)="setFilter('ERROR')"
+            [ngClass]="currentFilter === 'ERROR' ? 'bg-red-100 border-red-200 ring-1 ring-red-300' : 'bg-red-50 border-red-100'"
+            class="px-4 py-2 text-xs font-semibold rounded-lg text-red-700 border hover:bg-red-100 transition">
+        Solo Errores
+    </button>
+</div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-slate-700">
+            <thead class="text-xs text-slate-500 uppercase bg-slate-50/50 border-b border-slate-100">
+              <tr>
+                <th scope="col" class="px-8 py-4">Status</th>
+                <th scope="col" class="px-6 py-4">Hora</th>
+                <th scope="col" class="px-6 py-4">Actividad (Action)</th>
+                <th scope="col" class="px-6 py-4">Operador (User)</th>
+                <th scope="col" class="px-6 py-4">Detalles Rápidos</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+  <tr *ngFor="let event of filteredEvents" class="hover:bg-slate-50/50 transition-colors">
+    <td class="px-8 py-4">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold"
+            [ngClass]="{
+              'bg-indigo-50 text-indigo-700': event.level === 'INFO',
+              'bg-red-50 text-red-700': event.level === 'ERROR',
+              'bg-amber-50 text-amber-800': event.level === 'WARN',
+              'bg-emerald-50 text-emerald-800': event.level === 'SUCCESS'
+            }">
+        <span class="h-1.5 w-1.5 rounded-full"
+              [ngClass]="{
+                'bg-indigo-500': event.level === 'INFO',
+                'bg-red-500': event.level === 'ERROR',
+                'bg-amber-500': event.level === 'WARN',
+                'bg-emerald-500': event.level === 'SUCCESS'
+              }"></span>
+        {{ event.level }}
+      </span>
+    </td>
+    <td class="px-6 py-4 font-mono text-xs text-slate-500">
+      {{ event.timestamp | date:'HH:mm:ss dd/MMM' }}
+    </td>
+    <td class="px-6 py-4 font-medium text-slate-900">{{ event.action }}</td>
+    <td class="px-6 py-4">{{ event.userName }} ({{ event.userId }})</td>
+    <td class="px-6 py-4" [ngClass]="{'text-red-600 font-medium': event.level === 'ERROR', 'text-slate-600': event.level !== 'ERROR'}">
+      {{ event.details }}
+    </td>
+  </tr>
+
+  <tr *ngIf="filteredEvents.length === 0">
+    <td colspan="5" class="px-8 py-12 text-center text-slate-500">
+      <p class="font-medium text-slate-600">No hay eventos para mostrar con este filtro.</p>
+    </td>
+  </tr>
+  
+</tbody>
+          </table>
+        </div>
+        
+        <div class="px-8 py-4 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between">
+            <span class="text-xs text-slate-500">Mostrando últimas 4 entradas de 1,234</span>
+            <div class="flex gap-1.5">
+                <button class="px-3 py-1 text-xs font-medium rounded bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition">Anterior</button>
+                <button class="px-3 py-1 text-xs font-medium rounded bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition">Siguiente</button>
+            </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</div>

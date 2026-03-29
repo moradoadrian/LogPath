@@ -1,0 +1,18 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { PosEvent } from '../dashboard.component'; 
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LogService {
+  // ¡Nuestra nueva API en la nube de CubePath!
+  private apiUrl = 'http://logpath-logpathapi-jstq8p-c92805-108-165-47-114.traefik.me/api/logs';
+
+  constructor(private http: HttpClient) { }
+
+  getLogs(): Observable<PosEvent[]> {
+    return this.http.get<PosEvent[]>(this.apiUrl);
+  }
+}
