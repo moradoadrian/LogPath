@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { LogService } from './services/log.service'; 
 
@@ -18,14 +18,68 @@ export interface PosEvent {
   imports: [CommonModule, DatePipe],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   logs: PosEvent[] = [];
   isLoading = true;
+  private refreshInterval: any;
 
   constructor(private logService: LogService) {}
 
   ngOnInit() {
     this.fetchRealLogs();
+    this.refreshInterval = setInterval(() => {
+      this.fetchRealLogsSilently();
+    }, 5000);
+  }
+
+  ngOnDestroy() {
+    if (this.refreshInterval) {
+      clearInterval(this.refreshInterval);
+    }
+  }
+
+  fetchRealLogsSilently() {
+    this.logService.getLogs().subscribe({
+      next: (data) => {
+        this.logs = data; 
+      },
+      error: (err) => console.error('Error en actualización en segundo plano:', err)
+    });
+  }
+
+  exportToCSV() {
+    if (this.logs.length === 0) return;
+
+    const headers = ['ID Evento', 'Nivel', 'Acción', 'Operador', 'Detalles', 'Fecha'];
+    const csvRows = [headers.join(',')]; // Primera fila del Excel
+
+
+    this.logs.forEach(log => {
+      const row = [
+        log.id,
+        log.level,
+        log.action,
+        log.userName,
+
+        `"${log.details?.replace(/"/g, '""') || ''}"`, 
+        new Date(log.timestamp).toLocaleString()
+      ];
+      csvRows.push(row.join(','));
+    });
+
+
+    const csvContent = csvRows.join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    
+
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `LogPath_Auditoria_${new Date().getTime()}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   // ¡Llamada a API en .NET 10 para obtener logs reales de PostgreSQL!
