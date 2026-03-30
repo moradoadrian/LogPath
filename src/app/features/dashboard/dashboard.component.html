@@ -95,6 +95,26 @@
       </p>
     </div>
   </section>
+  <div class="mb-6 bg-gradient-to-r from-indigo-900 to-purple-900 rounded-xl p-6 text-white shadow-lg">
+  <div class="flex items-center justify-between">
+    <div>
+      <h2 class="text-xl font-bold flex items-center gap-2">
+        <span>🤖</span> Auditoría Forense con IA
+      </h2>
+      <p class="text-indigo-200 text-sm mt-1">Analiza los últimos 50 eventos en busca de anomalías y fraude.</p>
+    </div>
+    
+    <button (click)="runAIAnalysis()" [disabled]="isAnalyzing" 
+            class="bg-white text-indigo-900 px-6 py-2.5 rounded-lg font-bold hover:bg-indigo-50 transition-all flex items-center gap-2 disabled:opacity-50">
+      <span *ngIf="!isAnalyzing">Ejecutar Análisis</span>
+      <span *ngIf="isAnalyzing" class="animate-pulse">Analizando logs...</span>
+    </button>
+  </div>
+
+  <div *ngIf="aiAnalysis" class="mt-4 p-4 bg-white/10 rounded-lg border border-white/20 backdrop-blur-sm">
+    <p class="whitespace-pre-wrap font-mono text-sm">{{ aiAnalysis }}</p>
+  </div>
+</div>
 
   <section class="bg-white p-4 rounded-3xl shadow-xl border border-slate-100">
     <div *ngIf="isLoading" class="p-10 text-center text-slate-500 flex flex-col items-center">

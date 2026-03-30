@@ -18,4 +18,7 @@ export class LogService {
   createLog(logData: any): Observable<any> {
     return this.http.post(this.apiUrl, logData);
   }
+  analyzeLogsWithAI(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/analyze`);
+  }
 }

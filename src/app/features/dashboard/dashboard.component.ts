@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   logs: PosEvent[] = [];
   isLoading = true;
   private refreshInterval: any;
+  aiAnalysis: string | null = null;
+  isAnalyzing = false;
 
   constructor(private logService: LogService) {}
 
@@ -146,5 +148,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       case 'INFO': return 'bg-blue-100 text-blue-800 ring-blue-600/10';
       default: return 'bg-gray-100 text-gray-800 ring-gray-600/10';
     }
+  }
+
+  runAIAnalysis() {
+    this.isAnalyzing = true;
+    this.aiAnalysis = null; // Limpiamos el análisis anterior
+
+    this.logService.analyzeLogsWithAI().subscribe({
+      next: (response) => {
+        this.aiAnalysis = response.analysis;
+        this.isAnalyzing = false;
+      },
+      error: (err) => {
+        console.error(err);
+        this.aiAnalysis = 'Error al conectar con el motor de IA.';
+        this.isAnalyzing = false;
+      }
+    });
   }
 }
