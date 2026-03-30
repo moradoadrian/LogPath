@@ -1,55 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LogService } from './services/log.service';
+import { CommonModule, DatePipe } from '@angular/common';
+import { LogService } from './services/log.service'; 
 
 export interface PosEvent {
-  id: string;
-  timestamp: Date;
-  level: 'INFO' | 'ERROR' | 'WARN' | 'SUCCESS';
+  id?: string;
+  level: string;
   action: string;
   userId: string;
   userName: string;
   details: string;
+  timestamp: Date;
 }
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './dashboard.component.html'
+  imports: [CommonModule, DatePipe],
+  templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
-  totalEvents = 0;
-  totalSales = 15750; 
-  criticalErrors = 0;
-  currentFilter: 'ALL' | 'ERROR' = 'ALL';
-  
-
-  recentEvents: PosEvent[] = [];
-
+  logs: PosEvent[] = [];
+  isLoading = true;
 
   constructor(private logService: LogService) {}
 
-
   ngOnInit() {
+    this.fetchRealLogs();
+  }
+
+  // ¡Llamada a API en .NET 10 para obtener logs reales de PostgreSQL!
+  fetchRealLogs() {
     this.logService.getLogs().subscribe({
       next: (data) => {
-        this.recentEvents = data;
-        this.totalEvents = data.length;
-        this.criticalErrors = data.filter(e => e.level === 'ERROR').length;
+        this.logs = data;
+        this.isLoading = false;
       },
-      error: (err) => console.error('Error al cargar logs:', err)
+      error: (err) => {
+        console.error('Error al conectar con la base de datos:', err);
+        this.isLoading = false;
+      }
     });
   }
 
-  get filteredEvents() {
-    if (this.currentFilter === 'ERROR') {
-      return this.recentEvents.filter(event => event.level === 'ERROR');
-    }
-    return this.recentEvents;
+  // KPIs basados en datos reales de PostgreSQL
+  get successCount(): number {
+    return this.logs.filter(log => log.level === 'SUCCESS').length;
   }
 
-  setFilter(filter: 'ALL' | 'ERROR') {
-    this.currentFilter = filter;
+  get alertCount(): number {
+    return this.logs.filter(log => log.level === 'ERROR' || log.level === 'CRITICAL').length;
+  }
+
+  get uniqueOperators(): number {
+    return new Set(this.logs.map(log => log.userName)).size;
+  }
+  getEventTypeClass(level: string): string {
+    switch (level?.toUpperCase()) {
+      case 'SUCCESS': return 'bg-emerald-100 text-emerald-800 ring-emerald-600/10';
+      case 'ERROR': return 'bg-red-100 text-red-800 ring-red-600/10';
+      case 'WARNING': return 'bg-amber-100 text-amber-800 ring-amber-600/10';
+      case 'INFO': return 'bg-blue-100 text-blue-800 ring-blue-600/10';
+      default: return 'bg-gray-100 text-gray-800 ring-gray-600/10';
+    }
   }
 }
