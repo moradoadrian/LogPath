@@ -42,6 +42,36 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  isSimulating = false; 
+
+  // Función para disparar eventos desde la UI
+  simulateEvent(type: 'SUCCESS' | 'ERROR') {
+    this.isSimulating = true;
+
+    // Creamos un evento dinámico 
+    const newEvent = {
+      level: type,
+      action: type === 'ERROR' ? 'Falla de Hardware (UI)' : 'Venta Rápida (UI)',
+      userId: '777',
+      userName: 'Juez_Hackaton',
+      details: type === 'ERROR' 
+        ? '⚠️ [SIMULACIÓN] La impresora de tickets se atascó. Posible sobrecalentamiento.' 
+        : '✅ [SIMULACIÓN] Cobro en efectivo realizado sin problemas. Monto: $450.00 MXN.'
+    };
+
+    // Lo mandamos al backend en .NET
+    this.logService.createLog(newEvent).subscribe({
+      next: () => {
+        this.fetchRealLogs(); 
+        this.isSimulating = false;
+      },
+      error: (err) => {
+        console.error('Error al simular el evento:', err);
+        this.isSimulating = false;
+      }
+    });
+  }
+
   // KPIs basados en datos reales de PostgreSQL
   get successCount(): number {
     return this.logs.filter(log => log.level === 'SUCCESS').length;

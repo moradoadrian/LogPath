@@ -7,12 +7,15 @@ import { PosEvent } from '../dashboard.component';
   providedIn: 'root'
 })
 export class LogService {
-  // ¡Nuestra nueva API en la nube de CubePath!
+  // ¡API en la nube de CubePath!
   private apiUrl = 'http://logpath-logpathapi-jstq8p-c92805-108-165-47-114.traefik.me/api/logs';
 
   constructor(private http: HttpClient) { }
 
   getLogs(): Observable<PosEvent[]> {
     return this.http.get<PosEvent[]>(this.apiUrl);
+  }
+  createLog(logData: any): Observable<any> {
+    return this.http.post(this.apiUrl, logData);
   }
 }
