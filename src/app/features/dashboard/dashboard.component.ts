@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private refreshInterval: any;
   aiAnalysis: string | null = null;
   isAnalyzing = false;
+  currentPage: number = 1;
+  itemsPerPage: number = 8;
 
   constructor(private logService: LogService) {}
 
@@ -165,5 +167,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.isAnalyzing = false;
       }
     });
+  }
+
+  get paginatedLogs(): PosEvent[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.logs.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.logs.length / this.itemsPerPage) || 1;
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) this.currentPage++;
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) this.currentPage--;
   }
 }
